@@ -4,9 +4,6 @@
 # This is not intended to be a standalone program, but the base code for generating the mappings
 # May be compatible for website usage
 
-
-
-DisasmLabel = 0 # Determine if we want to use generic TC_XXZ names or the disasm labels
 global XPOS, INDEX
 XPOS = 0
 INDEX = 0
