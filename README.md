@@ -18,8 +18,16 @@ This CLI (Command Line Interface) Tool allows users to easily create title cards
 
 ## How To Run
 
+Linux/BSD/Mac OS
+
 ```
 python3 s3tcg-api.py
+```
+
+Windows
+
+```
+python s3tcg-api.py
 ```
 
 The following instructions are for S3&K users
