@@ -1,7 +1,13 @@
 ## Sonic 3 Title Card Mappings Generator (S3TCG)
 
-TODO: 
+This script allows users to easily create title cards for Sonic 3 & Knuckles and Sonic Clean Engine
 
-* Compress the output art
+Compression tools:
 
-* Fix the spacing to look nicer in S3
+* Flex 2
+
+* mdcomp
+
+* ClownMapEd/SonMapEd
+
+

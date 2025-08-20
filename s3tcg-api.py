@@ -114,8 +114,22 @@ def Generate(TextToGenerate):
     for x in Data:
         Uncompressed_Art.write(x)
 #TODO; compress the art for S3 and maybe even SCE here
-    print("Compress the output.bin file to KosM for S3 or KosPM for SCE")
-    print("MAPPINGS INSTRUCTIONS:\n\nS3/K:\nin General/Sprites/Title Cards/Map - Title Card.asm (or Map - Title Card S3.asm for S3 alone) replace the original zone mappings (minus the label).\n\nSCE:\nIn Objects/Main/Title Card/Object Data/Map - Title Card.asm")
-    print("\nART INSTRUCTIONS:\n\nS3/K:\nin Level/XXX/KosinskiM Art/Title card.bin needs to be replaced with the compressed version of the output\n\nSCE:\nSame as S3, but KosPM and in Objects/Main/Title Card/KosinskiPM Art/Levels/XXX - Title Card.kospm")
+    print("""
+Compress the output.bin file to KosM for S3&K or KosPM for SCE
+
+MAPPINGS INSTRUCTIONS:
+S3&K:
+    In General/Sprites/Title Cards/Map - Title Card.asm (or Map - Title Card S3.asm for S3 alone) replace the original zone mappings (minus the label).
+SCE:
+    In Objects/Main/Title Card/Object Data/Map - Title Card.asm
+    
+ART INSTRUCTIONS:
+Compression Types:
+S3&K:
+    In Level/XXX/KosinskiM Art/Title card.bin needs to be replaced with the Kosinski Moduled (KosM) compressed version of the output
+SCE:
+    Same as S3, but Kosinski Moduled+ (KosPM) art compression and in Objects/Main/Title Card/KosinskiPM Art/Levels/XXX - Title Card.kospm
+
+""")
 if __name__ == "__main__":
     Generate(input("Zone Name (Art will be in output.bin as uncompressed): "))
