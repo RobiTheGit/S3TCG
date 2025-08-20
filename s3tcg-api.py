@@ -23,7 +23,7 @@ def Generate(TextToGenerate):
     POS_AFTER_0 = False    
     if len(REGEX_STEP) <= 8:
         POS_AFTER_0 = True
-    StartLoc = [0x70,0x60,0x50,0x40,0x30,0x20, 0x10, 0x00, 0xFFF0, 0xFFE0, 0xFFD0, 0xFFC0, 0xFFB0, 0xFFA0, 0xFF90] # still the Sonic 2 ones here
+    StartLoc = [0x80,0x70,0x60,0x50,0x40,0x30,0x20, 0x10, 0x00, 0xFFF0, 0xFFE0, 0xFFD0, 0xFFC0, 0xFFB0, 0xFFA0] # still the Sonic 2 ones here
 
     XPOS = StartLoc[len(REGEX_STEP)]
     INDEX = 0x54D
@@ -33,7 +33,7 @@ def Generate(TextToGenerate):
     ALL_CHAR = []
     USED_CHARS = []
     OUTPUT = []
-    OUTPUT.append(f"Map: dc.w {L_STEP_HEX.replace('0X', '$')}")
+    OUTPUT.append(f"Map_TitleCard_XXX: dc.w {L_STEP_HEX.replace('0X', '$')}")
     for CURR_CHAR in REGEX_STEP:
         ALL_CHAR.append(CURR_CHAR.upper())
 #=================================================================
@@ -114,6 +114,7 @@ def Generate(TextToGenerate):
     for x in Data:
         Uncompressed_Art.write(x)
 #TODO; compress the art for S3 and maybe even SCE here
-    
+    print("Compress the output.bin file to KosM for S3 or KosPM for SCE")
+    print("MAPPINGS INSTRUCTIONS:\nS3/K: in General/Sprites/Title Cards/Map - Title Card.asm (or Map - Title Card S3.asm for S3 alone), there are 2 mappings files, copy the mappings into the zone's original mappings that you are replacing.\nSCE: in Objects/Main/Title Card/Object Data/Map - Title Card.asm")
 if __name__ == "__main__":
     Generate(input("Zone Name (Art will be in output.bin as uncompressed): "))
