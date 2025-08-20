@@ -12,7 +12,7 @@ Compression tools:
 
 Requirements:
 
-* Python 3.6 or newer
+* [Python](https://www.python.org/downloads/) 3.6 or newer
  
 * A Terminal / Command Prompt
 
