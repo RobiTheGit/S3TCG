@@ -113,23 +113,35 @@ def Generate(TextToGenerate):
         Uncompressed_Art = open("output.bin", "wb")
     for x in Data:
         Uncompressed_Art.write(x)
-#TODO; compress the art for S3 and maybe even SCE here
-    print("""
-Compress the output.bin file to KosM for S3&K or KosPM for SCE
+        
+        
+    try:
+        Mappings_file = open("output.txt", "x")   
+    except:
+        Mappings_file = open("output.txt", "w")
+    for x in OUTPUT:
+        Mappings_file.write(x)
+        
+    help = """
+;Compress the output.bin file to KosM for S3&K or KosPM for SCE
 
-MAPPINGS INSTRUCTIONS:
-S3&K:
-    In General/Sprites/Title Cards/Map - Title Card.asm (or Map - Title Card S3.asm for S3 alone) replace the original zone mappings (minus the label).
-SCE:
-    In Objects/Main/Title Card/Object Data/Map - Title Card.asm
+;MAPPINGS INSTRUCTIONS:
+
+;S3&K:
+;    In General/Sprites/Title Cards/Map - Title Card.asm (or Map - Title Card S3.asm for S3 alone) replace the original zone mappings (minus the label).
+;SCE:
+;    In Objects/Main/Title Card/Object Data/Map - Title Card.asm
     
-ART INSTRUCTIONS:
-Compression Types:
-S3&K:
-    In Level/XXX/KosinskiM Art/Title card.bin needs to be replaced with the Kosinski Moduled (KosM) compressed version of the output
-SCE:
-    Same as S3, but Kosinski Moduled+ (KosPM) art compression and in Objects/Main/Title Card/KosinskiPM Art/Levels/XXX - Title Card.kospm
-
-""")
+;ART INSTRUCTIONS:
+;Compression Types:
+;S3&K:
+;    In Level/XXX/KosinskiM Art/Title card.bin needs to be replaced with the Kosinski Moduled (KosM) compressed version of the output
+;SCE:
+;    Same as S3, but Kosinski Moduled+ (KosPM) art compression and in Objects/Main/Title Card/KosinskiPM Art/Levels/XXX - Title Card.kospm
+"""
+    print(help)
+    Mappings_file.write(help)
+    Mappings_file.close()
+    Uncompressed_Art.close()
 if __name__ == "__main__":
     Generate(input("Zone Name (Art will be in output.bin as uncompressed): "))
