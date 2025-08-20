@@ -10,4 +10,14 @@ Compression tools:
 
 * ClownMapEd/SonMapEd
 
+Requirements:
 
+* Python 3.6 or newer
+ 
+* A Terminal / Command Prompt
+
+How To Run
+
+```
+python3 s3tcg-api.py
+```
