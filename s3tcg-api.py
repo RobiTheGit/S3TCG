@@ -115,4 +115,4 @@ def Generate(TextToGenerate):
 
     
 if __name__ == "__main__":
-    Generate("STCG III")
+    Generate(input("Zone Name (Art will be in output.bin as uncompressed): "))
