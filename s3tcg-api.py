@@ -5,7 +5,6 @@
 # May be compatible for website usage
 
 
-import re
 
 DisasmLabel = 0 # Determine if we want to use generic TC_XXZ names or the disasm labels
 global XPOS, INDEX
@@ -14,7 +13,12 @@ INDEX = 0
 
 
 def Generate(TextToGenerate):
-    REGEX_STEP = re.sub(r"[^a-zA-Z ]", "", TextToGenerate)     # remove unmapped characters
+    REGEX_STEP = ''
+    for CHARACTER in TextToGenerate:
+        if CHARACTER.isalpha() or CHARACTER == " ":
+            REGEX_STEP += CHARACTER # remove unmapped characters
+
+    
     LENGTH_STEP = REGEX_STEP.replace(" ", "")
     CHARS_STEP = list(dict.fromkeys(list(LENGTH_STEP.upper().replace("E","").replace("N","").replace("O","").replace("Z",""))))
     print(CHARS_STEP)
