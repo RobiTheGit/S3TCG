@@ -2,7 +2,7 @@
 
 This CLI (Command Line Interface) Tool allows users to easily create title cards for Sonic 3 & Knuckles
 
-## Compression tools:
+## Compression tools
 
 * [Flex 2](https://github.com/kirjavascript/Flex2)
 
@@ -10,7 +10,7 @@ This CLI (Command Line Interface) Tool allows users to easily create title cards
 
 * [ClownMapEd](https://github.com/Clownacy/ClownMapEd)/[SonMapEd](https://info.sonicretro.org/SonMapEd)
 
-## Requirements:
+## Requirements
 
 * [Python 3.6](https://www.python.org/downloads/) or newer
  
@@ -32,11 +32,11 @@ python s3tcg-api.py
 
 The following instructions are for S3&K users
 
-## MAPPINGS INSTRUCTIONS:
+## MAPPINGS INSTRUCTIONS
 
 * In `General/Sprites/Title Cards/Map - Title Card.asm` (or `Map - Title Card S3.asm` for S3 alone) replace the original zone mappings (minus the label) with the versions in your terminal (or `output.txt`).
 
     
-## ART INSTRUCTIONS:
+## ART INSTRUCTIONS
 *    In `Level/XXX/KosinskiM Art/Title card.bin` needs to be replaced with the Kosinski Moduled (KosM) compressed version of the `output.bin` file
 
