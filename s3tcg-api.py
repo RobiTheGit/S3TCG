@@ -116,7 +116,7 @@ def Generate(TextToGenerate):
         Uncompressed_Art = open("output.bin", "wb")
     for x in Data:
         Uncompressed_Art.write(x)
-
+#TODO; compress the art for S3 and maybe even SCE here
     
 if __name__ == "__main__":
     Generate(input("Zone Name (Art will be in output.bin as uncompressed): "))
