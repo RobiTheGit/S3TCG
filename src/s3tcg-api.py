@@ -7,9 +7,6 @@
 global XPOS, INDEX
 XPOS = 0
 INDEX = 0
-#I like: .,!,1
-#O like: 6, 9
-#Normal, 2,3,4,5,7,8,0,),(
 
 def Generate(TextToGenerate, Game):
     REGEX_STEP = ''
