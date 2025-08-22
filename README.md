@@ -2,6 +2,12 @@
 
 This CLI (Command Line Interface) Tool allows users to easily create title cards for Sonic 3 & Knuckles
 
+## Examples
+
+![image](img/S3K_Img.png)
+
+![image](img/SCE_Img.png)
+
 ## Compression tools
 
 * [Flex 2](https://github.com/kirjavascript/Flex2)
