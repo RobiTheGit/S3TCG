@@ -35,7 +35,7 @@ Windows
 python s3tcg-api.py
 ```
 
-The following instructions are for S3&K users
+The following instructions are for S3&K users, but SCE follows this mostly the same; there is a dedicated SCE section for the information that differs
 
 ## MAPPINGS INSTRUCTIONS
 
