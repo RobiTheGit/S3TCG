@@ -27,6 +27,7 @@ def Generate(TextToGenerate, Game):
 
     XPOS = StartLoc[len(REGEX_STEP)]
     if Game.upper() == "SCE" or Game.upper() == "S.C.E." or Game.upper() == "Sonic Clean Engine" or Game.upper() == "S1S3" or Game.upper() == "Clean Engine" or Game.upper() == "CE":
+        Game = "SCE"
         INDEX = 0x04D    
     else:
         INDEX = 0x54D
@@ -73,20 +74,28 @@ def Generate(TextToGenerate, Game):
             INDEX += 0x9
 
         elif CURR_CHAR == "Z":
-
-            OUTPUT.append(f"\tdc.w $6, $8531, {hex(XPOS).replace('0x', '$').upper()} ;Z")
+            if Game.upper() == "SCE":
+                OUTPUT.append(f"\tdc.w $6, $8031, {hex(XPOS).replace('0x', '$').upper()} ;Z")
+            else:
+                OUTPUT.append(f"\tdc.w $6, $8531, {hex(XPOS).replace('0x', '$').upper()} ;Z")          
             XPOS += 0x10
         elif CURR_CHAR == "O":
-
-            OUTPUT.append(f"\tdc.w $A, $8528, {hex(XPOS).replace('0x', '$').upper()} ;O")
+            if Game.upper() == "SCE":
+                OUTPUT.append(f"\tdc.w $A, $8028, {hex(XPOS).replace('0x', '$').upper()} ;O")
+            else:
+                OUTPUT.append(f"\tdc.w $A, $8528, {hex(XPOS).replace('0x', '$').upper()} ;O")  
             XPOS += 0x18
         elif CURR_CHAR == "N":
-
-            OUTPUT.append(f"\tdc.w $6, $8522, {hex(XPOS).replace('0x', '$').upper()} ;N")
+            if Game.upper() == "SCE":
+                OUTPUT.append(f"\tdc.w $6, $8022, {hex(XPOS).replace('0x', '$').upper()} ;N")
+            else:
+                OUTPUT.append(f"\tdc.w $6, $8522, {hex(XPOS).replace('0x', '$').upper()} ;N")  
             XPOS += 0x10
         elif CURR_CHAR == "E":
-
-            OUTPUT.append(f"\tdc.w $6, $851C, {hex(XPOS).replace('0x', '$').upper()} ;E")
+            if Game.upper() == "SCE":
+                OUTPUT.append(f"\tdc.w $6, $801C, {hex(XPOS).replace('0x', '$').upper()} ;E")
+            else:
+                OUTPUT.append(f"\tdc.w $6, $851C, {hex(XPOS).replace('0x', '$').upper()} ;E")  
             XPOS += 0x10
         elif CURR_CHAR == " " or CURR_CHAR == "":        
             OUTPUT.append("")
