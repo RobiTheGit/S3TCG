@@ -5,7 +5,6 @@ This CLI (Command Line Interface) Tool allows users to easily create title cards
 ## Examples
 
 ![image](img/S3K_Img.png)
-
 ![image](img/SCE_Img.png)
 
 ## Compression tools
