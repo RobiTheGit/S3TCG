@@ -40,3 +40,6 @@ The following instructions are for S3&K users
 ## ART INSTRUCTIONS
 *    In `Level/XXX/KosinskiM Art/Title card.bin` needs to be replaced with the Kosinski Moduled (KosM) compressed version of the `output.bin` file
 
+## SCE SPECIFIC INFORMATION
+
+*The titlecard VRAM addresses start with $85, for it to work in SCE, you must changes these to be $80
