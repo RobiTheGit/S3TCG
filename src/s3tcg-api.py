@@ -37,6 +37,43 @@ def Generate(TextToGenerate, Game):
     USED_CHARS = []
     OUTPUT = []
     OUTPUT.append(f"Map_TitleCard_XXX: dc.w {L_STEP_HEX.replace('0X', '$')}")
+    XPOS_DELTAS = {
+    "A":0x10,
+    "B":0x10,
+    "C":0x0F,
+    "D":0x0F,
+    "F":0x10,
+    "G":0x0F,
+    "H":0x10,
+    "I":0x08,
+    "J":0x08,
+    "K":0x10,
+    "L":0x08,
+    "M":0x18,
+    "P":0x10,
+    "Q":0x18,
+    "R":0x10,
+    "S":0x0E,
+    "T":0x0E,
+    "U":0x10,
+    "V":0x0F,
+    "W":0x18,
+    "X":0x10,
+    "Y":0x0F,
+    ".":0x08,
+    "!":0x08,
+    "(":0x10,
+    ")":0x10,
+    "1":0x08,
+    "2":0x10,
+    "3":0x10,
+    "4":0x10,
+    "5":0x10,
+    "6":0x18,
+    "7":0x10,
+    "8":0x10,
+    "9":0x18
+    }
     for CURR_CHAR in REGEX_STEP:
         ALL_CHAR.append(CURR_CHAR.upper())
 #=================================================================
@@ -51,25 +88,20 @@ def Generate(TextToGenerate, Game):
             REUSED_CHAR = USED_CHARS.index(CURR_CHAR)
             REUSED_INDEX = INDECIES[REUSED_CHAR]
             OUTPUT.append(f"\t" + REUSED_INDEX + f" {hex(XPOS).replace('0x', '$').upper()} ;{CURR_CHAR}")
-            if CURR_CHAR == "I" or CURR_CHAR == "L" or CURR_CHAR == "J" or CURR_CHAR == "." or CURR_CHAR == "1" or CURR_CHAR == "!":
-                XPOS += 0x8
-            elif CURR_CHAR == "M" or CURR_CHAR == "W" or CURR_CHAR == "Q" or CURR_CHAR == "6" or CURR_CHAR == "9":
-                XPOS += 0x9
-            else:
-                XPOS += 0x10
-        elif CURR_CHAR == "I" or CURR_CHAR == "L" or CURR_CHAR == "J" or CURR_CHAR == "." or CURR_CHAR == "1" or CURR_CHAR == "!":
+            XPOS += XPOS_DELTAS[CURR_CHAR]
+        elif CURR_CHAR == "I" or CURR_CHAR == "L" or CURR_CHAR == "J" or CURR_CHAR == "." or CURR_CHAR == "1" or CURR_CHAR == "!" or CURR_CHAR == ".":
             WIDTH = 0x2
             OUTPUT.append(f"\tdc.w {hex(WIDTH).replace('0x', '$').upper()}, {hex(INDEX+0x8000).replace('0x', '$').upper()}, {hex(XPOS).replace('0x', '$').upper()} ;{CURR_CHAR}")
             USED_CHARS.append(CURR_CHAR)
             INDECIES.append(f"dc.w {hex(WIDTH).replace('0x', '$').upper()}, {hex(INDEX+0x8000).replace('0x', '$').upper()},")
-            XPOS += 0x8
+            XPOS += XPOS_DELTAS[CURR_CHAR]
             INDEX += 0x3
         elif CURR_CHAR == "M" or CURR_CHAR == "W" or CURR_CHAR == "Q" or CURR_CHAR == "6" or CURR_CHAR == "9":
             WIDTH = 0xA
             INDECIES.append(f"dc.w {hex(WIDTH).replace('0x', '$').upper()}, {hex(INDEX+0x8000).replace('0x', '$').upper()},")
             USED_CHARS.append(CURR_CHAR)
             OUTPUT.append(f"\tdc.w {hex(WIDTH).replace('0x', '$').upper()}, {hex(INDEX+0x8000).replace('0x', '$').upper()}, {hex(XPOS).replace('0x', '$').upper()} ;{CURR_CHAR}")
-            XPOS += 0x18
+            XPOS += XPOS_DELTAS[CURR_CHAR]
             INDEX += 0x9
 
         elif CURR_CHAR == "Z":
@@ -106,7 +138,7 @@ def Generate(TextToGenerate, Game):
             INDECIES.append(f"dc.w {hex(WIDTH).replace('0x', '$').upper()}, {hex(INDEX+0x8000).replace('0x', '$').upper()},")
 
             OUTPUT.append(f"\tdc.w {hex(WIDTH).replace('0x', '$').upper()}, {hex(INDEX+0x8000).replace('0x', '$').upper()}, {hex(XPOS).replace('0x', '$').upper()} ;{CURR_CHAR}")
-            XPOS += 0x10
+            XPOS += XPOS_DELTAS[CURR_CHAR]
             INDEX += 0x6
 
     for x in OUTPUT:
