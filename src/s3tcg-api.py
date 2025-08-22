@@ -9,7 +9,7 @@ XPOS = 0
 INDEX = 0
 
 
-def Generate(TextToGenerate):
+def Generate(TextToGenerate, Game):
     REGEX_STEP = ''
     for CHARACTER in TextToGenerate:
         if CHARACTER.isalpha() or CHARACTER == " ":
@@ -26,7 +26,10 @@ def Generate(TextToGenerate):
     StartLoc = [0x80,0x70,0x60,0x50,0x40,0x30,0x20, 0x10, 0x00, 0xFFF0, 0xFFE0, 0xFFD0, 0xFFC0, 0xFFB0, 0xFFA0, 0xFF90, 0xFF80, 0xFF70, 0xFF60, 0xFF50, 0xFF40, 0xFF30, 0xFF20, 0xFF10, 0xFF00] # still the Sonic 2 ones here
 
     XPOS = StartLoc[len(REGEX_STEP)]
-    INDEX = 0x54D
+    if Game.upper() == "SCE" or Game.upper() == "S.C.E." or Game.upper() == "Sonic Clean Engine" or Game.upper() == "S1S3" or Game.upper() == "Clean Engine" or Game.upper() == "CE":
+        INDEX = 0x04D    
+    else:
+        INDEX = 0x54D
     WIDTH = 0x6
     INDECIES = []
     CURR_CHAR = ''
@@ -124,25 +127,12 @@ def Generate(TextToGenerate):
         
     help = """
 ;Compress the output.bin file to KosM for S3&K or KosPM for SCE
-
-;MAPPINGS INSTRUCTIONS:
-
-;S3&K:
-;    In General/Sprites/Title Cards/Map - Title Card.asm (or Map - Title Card S3.asm for S3 alone) replace the original zone mappings (minus the label).
-;SCE:
-;    In Objects/Main/Title Card/Object Data/Map - Title Card.asm
-    
-;ART INSTRUCTIONS:
-;Compression Types:
-;S3&K:
-;    In Level/XXX/KosinskiM Art/Title card.bin needs to be replaced with the Kosinski Moduled (KosM) compressed version of the output
-;SCE:
-;    Same as S3, but Kosinski Moduled+ (KosPM) art compression and in Objects/Main/Title Card/KosinskiPM Art/Levels/XXX - Title Card.kospm
+;Read the README.md file included for further instructions
 """
     print(help)
     Mappings_file.write(help)
     Mappings_file.close()
     Uncompressed_Art.close()
 if __name__ == "__main__":
-    Generate(input("Zone Name (Art will be in output.bin as uncompressed): "))
+    Generate(input("Zone Name (Art will be in output.bin as uncompressed): "), input("SCE or S3K? "))
 

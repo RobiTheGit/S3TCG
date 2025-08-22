@@ -48,7 +48,7 @@ The following instructions are for S3&K users
 
 ## SCE SPECIFIC INFORMATION
 
-* The titlecard VRAM addresses start with $85, for it to work in SCE, you must changes these to be $80
+* Make sure to Enter SCE when asked which game
 
 * Compress to KosPM instead of KosM (`Objects/Main/Title Card/KosinskiPM Art/Levels/XXX - Title Card.kospm`)
 
