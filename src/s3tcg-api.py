@@ -7,17 +7,19 @@
 global XPOS, INDEX
 XPOS = 0
 INDEX = 0
-
+#I like: .,!,1
+#O like: 6, 9
+#Normal, 2,3,4,5,7,8,0,),(
 
 def Generate(TextToGenerate, Game):
     REGEX_STEP = ''
     for CHARACTER in TextToGenerate:
-        if CHARACTER.isalpha() or CHARACTER == " ":
+        if CHARACTER.isalpha() or CHARACTER == " " or CHARACTER in "0123456789().!":
             REGEX_STEP += CHARACTER # remove unmapped characters
 
     
     LENGTH_STEP = REGEX_STEP.replace(" ", "")
-    CHARS_STEP = list(dict.fromkeys(list(LENGTH_STEP.upper().replace("E","").replace("N","").replace("O","").replace("Z",""))))
+    CHARS_STEP = list(dict.fromkeys(list(LENGTH_STEP.upper().replace("E","").replace("N","").replace("O","").replace("0","").replace("Z",""))))
     print(CHARS_STEP)
     L_STEP_HEX = hex(len(LENGTH_STEP)).upper()
     POS_AFTER_0 = False    
@@ -47,25 +49,25 @@ def Generate(TextToGenerate, Game):
 # Set up some letter variables
         if XPOS > 0xFFFF:
             XPOS -= 0x10000
-        if CURR_CHAR in USED_CHARS and CURR_CHAR != "Z"  and CURR_CHAR != "O"  and CURR_CHAR != "N"  and CURR_CHAR != "E" :
+        if CURR_CHAR in USED_CHARS and CURR_CHAR != "Z"  and CURR_CHAR != "O" and CURR_CHAR != "0"  and CURR_CHAR != "N"  and CURR_CHAR != "E" :
          
             REUSED_CHAR = USED_CHARS.index(CURR_CHAR)
             REUSED_INDEX = INDECIES[REUSED_CHAR]
             OUTPUT.append(f"\t" + REUSED_INDEX + f" {hex(XPOS).replace('0x', '$').upper()} ;{CURR_CHAR}")
-            if CURR_CHAR == "I" or CURR_CHAR == "L" or CURR_CHAR == "J":
+            if CURR_CHAR == "I" or CURR_CHAR == "L" or CURR_CHAR == "J" or CURR_CHAR == "." or CURR_CHAR == "1" or CURR_CHAR == "!":
                 XPOS += 0x8
-            elif CURR_CHAR == "M" or CURR_CHAR == "W" or CURR_CHAR == "Q":
+            elif CURR_CHAR == "M" or CURR_CHAR == "W" or CURR_CHAR == "Q" or CURR_CHAR == "6" or CURR_CHAR == "9":
                 XPOS += 0x9
             else:
                 XPOS += 0x10
-        elif CURR_CHAR == "I" or CURR_CHAR == "L" or CURR_CHAR == "J":
+        elif CURR_CHAR == "I" or CURR_CHAR == "L" or CURR_CHAR == "J" or CURR_CHAR == "." or CURR_CHAR == "1" or CURR_CHAR == "!":
             WIDTH = 0x2
             OUTPUT.append(f"\tdc.w {hex(WIDTH).replace('0x', '$').upper()}, {hex(INDEX+0x8000).replace('0x', '$').upper()}, {hex(XPOS).replace('0x', '$').upper()} ;{CURR_CHAR}")
             USED_CHARS.append(CURR_CHAR)
             INDECIES.append(f"dc.w {hex(WIDTH).replace('0x', '$').upper()}, {hex(INDEX+0x8000).replace('0x', '$').upper()},")
             XPOS += 0x8
             INDEX += 0x3
-        elif CURR_CHAR == "M" or CURR_CHAR == "W" or CURR_CHAR == "Q":
+        elif CURR_CHAR == "M" or CURR_CHAR == "W" or CURR_CHAR == "Q" or CURR_CHAR == "6" or CURR_CHAR == "9":
             WIDTH = 0xA
             INDECIES.append(f"dc.w {hex(WIDTH).replace('0x', '$').upper()}, {hex(INDEX+0x8000).replace('0x', '$').upper()},")
             USED_CHARS.append(CURR_CHAR)
@@ -79,7 +81,7 @@ def Generate(TextToGenerate, Game):
             else:
                 OUTPUT.append(f"\tdc.w $6, $8531, {hex(XPOS).replace('0x', '$').upper()} ;Z")          
             XPOS += 0x10
-        elif CURR_CHAR == "O":
+        elif CURR_CHAR == "O" or CURR_CHAR == "0":
             if Game.upper() == "SCE":
                 OUTPUT.append(f"\tdc.w $A, $8028, {hex(XPOS).replace('0x', '$').upper()} ;O")
             else:
