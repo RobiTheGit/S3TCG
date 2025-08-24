@@ -163,7 +163,7 @@ def Generate(TextToGenerate, Game):
     except:
         Mappings_file = open("output.txt", "w")
     for x in OUTPUT:
-        Mappings_file.write(x)
+        Mappings_file.write(x+f"\n")
         
     help = """
 ;Compress the output.bin file to KosM for S3&K or KosPM for SCE
