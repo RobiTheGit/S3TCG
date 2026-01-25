@@ -151,17 +151,17 @@ def Generate(TextToGenerate, Game):
         char_bin.close()
 
     try:
-        Uncompressed_Art = open("output.bin", "xb")   
+        Uncompressed_Art = open(f"{REGEX_STEP}.bin", "xb")
     except:
-        Uncompressed_Art = open("output.bin", "wb")
+        Uncompressed_Art = open(f"{REGEX_STEP}.bin", "wb")
     for x in Data:
         Uncompressed_Art.write(x)
         
         
     try:
-        Mappings_file = open("output.txt", "x")   
+        Mappings_file = open(f"{REGEX_STEP}.txt", "x")
     except:
-        Mappings_file = open("output.txt", "w")
+        Mappings_file = open(f"{REGEX_STEP}.txt", "w")
     for x in OUTPUT:
         Mappings_file.write(x+f"\n")
         

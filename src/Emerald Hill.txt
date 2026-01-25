@@ -1,0 +1,16 @@
+Map_TitleCard_XXX: dc.w $B
+	dc.w $6, $851C, $FFC0 ;E
+	dc.w $A, $854D, $FFD0 ;M
+	dc.w $6, $851C, $FFE8 ;E
+	dc.w $6, $8556, $FFF8 ;R
+	dc.w $6, $855C, $8 ;A
+	dc.w $2, $8562, $18 ;L
+	dc.w $6, $8565, $20 ;D
+
+	dc.w $6, $856B, $3F ;H
+	dc.w $2, $8571, $4F ;I
+	dc.w $2, $8562, $57 ;L
+	dc.w $2, $8562, $5F ;L
+
+;Compress the output.bin file to KosM for S3&K or KosPM for SCE
+;Read the README.md file included for further instructions

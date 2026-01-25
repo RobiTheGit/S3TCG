@@ -39,11 +39,11 @@ The following instructions are for S3&K users, but SCE follows this mostly the s
 
 ## MAPPINGS INSTRUCTIONS
 
-* In `General/Sprites/Title Cards/Map - Title Card.asm` (or `Map - Title Card S3.asm` for S3 alone) replace the original zone mappings (minus the label) with the versions in your terminal (or `output.txt`).
+* In `General/Sprites/Title Cards/Map - Title Card.asm` (or `Map - Title Card S3.asm` for S3 alone) replace the original zone mappings (minus the label) with the versions in your terminal (or `{Level_Name}.txt`).
 
     
 ## ART INSTRUCTIONS
-*    In `Level/XXX/KosinskiM Art/Title card.bin` needs to be replaced with the Kosinski Moduled (KosM) compressed version of the `output.bin` file
+*    In `Level/XXX/KosinskiM Art/Title card.bin` needs to be replaced with the Kosinski Moduled (KosM) compressed version of the `{Level_Name}.bin` file
 
 ## SCE SPECIFIC INFORMATION
 
