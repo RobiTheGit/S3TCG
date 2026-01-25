@@ -173,5 +173,5 @@ def Generate(TextToGenerate, Game):
     Mappings_file.close()
     Uncompressed_Art.close()
 if __name__ == "__main__":
-    Generate(input("Zone Name (Art will be in output.bin as uncompressed): "), input("SCE or S3K? "))
+    Generate(input("Zone Name (Art will be in [Level Name].bin as uncompressed): "), input("SCE or S3K? "))
 
