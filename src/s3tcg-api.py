@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 
 # Sonic 3 Title Card Mappings Code Generator API
-# This is not intended to be a standalone program, but the base code for generating the mappings
 # May be compatible for website usage
 
 global XPOS, INDEX
