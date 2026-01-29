@@ -32,7 +32,7 @@ python3 s3tcg-api.py
 Windows
 
 ```
-python s3tcg-api.py
+py s3tcg-api.py
 ```
 
 The following instructions are for S3&K users, but SCE follows this mostly the same; there is a dedicated SCE section for the information that differs
