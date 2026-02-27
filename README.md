@@ -45,7 +45,7 @@ The following instructions are for S3&K users, but SCE follows this mostly the s
 ## ART INSTRUCTIONS
 *    In `Level/XXX/KosinskiM Art/Title card.bin` needs to be replaced with the Kosinski Moduled (KosM) compressed version of the `{Level_Name}.bin` file
 
-## SCE SPECIFIC INFORMATION
+## SCE (Before Feburary 26th, 2026) SPECIFIC INFORMATION
 
 * Make sure to Enter SCE when asked which game
 
